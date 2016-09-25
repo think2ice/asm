@@ -56,8 +56,10 @@ n <- 30
 norms <- replicate(100, rnorm(n, mean = 12, sd = sqrt(3)))
 norms <- t(norms)
 means <- apply(norms, 1, mean)
-lower.bound <- x
-upper.bound <- 
+# TO DO: found S and add the correspondent t-student in lower.bound and upper.bound
+S <- 
+lower.bound <- mean(means) - S/sqrt(n)
+upper.bound <- mean(means) + S/sqrt(n)
 sum (means >= lower.bound && means <= upper.bound)
 # 5. Confidence interval for sigma squared Normal distribution
 
@@ -65,11 +67,10 @@ n <- 30
 norms <- replicate(100, rnorm(n, mean = 12, sd = sqrt(3)))
 norms <- t(norms)
 variances <- apply(norms, 1, var)
-# as sigma is known, we can use this confidence interval: 
-install.packages('tDist')
-library(tDist)
-lower.bound <- 12 - 
-upper.bound <- 12 + 
+# TO DO: found S and add the correspondent Chi-squared in lower.bound and upper.bound
+S <-
+lower.bound <- mean(variances) - S/sqrt(n)
+upper.bound <- mean(variances) + S/sqrt(n)
 sum (variances >= lower.bound && variances <= upper.bound)
 
 # Understand the difference between mean and median 
